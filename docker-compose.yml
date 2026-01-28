@@ -122,7 +122,7 @@ services:
       AUTO_TAG: "gpt-auto"
       MANUAL_TAG: "gpt-manual"
       PDF_OCR_TAGGING: "true"
-      PDF_OCR_COMPLETE_TAG: "paperless-gpt-ocr-complete"
+      PDF_OCR_COMPLETE_TAG: "gpt-ocr-complete"
       PDF_UPLOAD: "false"
 
       LOG_LEVEL: "DEBUG" 
