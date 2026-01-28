@@ -70,7 +70,7 @@ services:
 
       ## pre-processing needed tags
       - PROCESS_PREDEFINED_DOCUMENTS=yes
-      - TAGS=gpt-processed,ai-gpt-processed
+      - TAGS=ai-processing-needed
 
       ## post-processing tags
       - ADD_AI_PROCESSED_TAG=yes
