@@ -12,7 +12,10 @@ services:
       - ./data/open-webui/data:/app/backend/data
 
   ollama:
+    # Uncomment for amd-gpu
     image: ollama/ollama:rocm
+    # Uncomment for nvidia-gpu
+    # image: ollama/ollama
     container_name: ollama
     volumes:
       - ./data/ollama/data/:/root/.ollama
@@ -25,6 +28,9 @@ services:
       - OLLAMA_KEEP_ALIVE=-1
       - OLLAMA_HOST=0.0.0.0:11434
       - OLLAMA_MODELS=ollama-models
+      - OLLAMA_FLASH_ATTENTION=1
+      - HSA_OVERRIDE_GFX_VERSION=11.0.0
+      - OLLAMA_VRAM_OVERRIDE=19327352832
     # Uncomment for nvidia-gpu
     # - NVIDIA_DRIVER_CAPABILITIES=all
     # - NVIDIA_VISIBLE_DEVICES=all
@@ -108,7 +114,7 @@ services:
       LLM_MODEL: "llama3.2:3b"
 
       OLLAMA_HOST: "http://ollama:11434"
-      OLLAMA_CONTEXT_LENGTH: "64000" # Sets Ollama NumCtx (context window)
+      OLLAMA_CONTEXT_LENGTH: "32000" # Sets Ollama NumCtx (context window)
 
       TOKEN_LIMIT: 1000 # Recommended for smaller models
 
@@ -116,7 +122,7 @@ services:
 
       OCR_PROVIDER: "llm" # Default OCR provider
       VISION_LLM_PROVIDER: 'ollama' # openai, ollama, mistral, or anthropic
-      VISION_LLM_MODEL: "minicpm-v:8b" # minicpm-v (ollama) or gpt-4o (openai) or claude-sonnet-4-5 (anthropic/claude)
+      VISION_LLM_MODEL: "ministral-3:14b" # minicpm-v (ollama) or gpt-4o (openai) or claude-sonnet-4-5 (anthropic/claude)
 
       AUTO_OCR_TAG: "gpt-ocr-auto"
       AUTO_TAG: "gpt-auto"
@@ -128,3 +134,14 @@ services:
       LOG_LEVEL: "DEBUG" 
     volumes:
       - ./data/paperless-gpt/prompts:/app/prompts # Mount the prompts directory
+
+  dozzle:
+    image: amir20/dozzle:latest
+    container_name: dozzle
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    ports:
+      - 8090:8080
+    environment:
+      - DOZZLE_ENABLE_ACTIONS=true
+      - DOZZLE_ENABLE_SHELL=true
