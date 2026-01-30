@@ -6,6 +6,7 @@ services:
     container_name: open-webui
     environment:
       - OLLAMA_BASE_URL=http://localhost:11434
+      - ENV=dev
     # ports:
     #   - "2000:8080"
     volumes:
@@ -31,6 +32,7 @@ services:
       - OLLAMA_FLASH_ATTENTION=1
       - HSA_OVERRIDE_GFX_VERSION=11.0.0
       - OLLAMA_VRAM_OVERRIDE=19327352832
+      - ROCR_VISIBLE_DEVICES=0
     # Uncomment for nvidia-gpu
     # - NVIDIA_DRIVER_CAPABILITIES=all
     # - NVIDIA_VISIBLE_DEVICES=all
