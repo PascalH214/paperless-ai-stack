@@ -94,7 +94,8 @@ services:
       # paperless-ai ai settings
       - AI_PROVIDER=ollama
       - OLLAMA_API_URL=http://localhost:11434
-      - OLLAMA_MODEL=llama3.2:3b
+      # - OLLAMA_MODEL=llama3.2:3b
+      - OLLAMA_MODEL=ministral-3:14b
       - TOKEN_LIMIT=128000
       - RESPONSE_TOKENS=1000
 
