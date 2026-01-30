@@ -70,6 +70,9 @@ services:
       - RAG_SERVICE_ENABLED=true
 
       - USE_EXISTING_DATA=yes # avoids that model creates tags/correspondents you dont want -> results in manual creation of this data
+      - RESTRICT_TO_EXISTING_TAGS=yes
+      - RESTRICT_TO_EXISTING_CORRESPONDENTS=yes
+      - RESTRICT_TO_EXISTING_DOCUMENT_TYPES=yes
 
       - USE_PROMPT_TAGS=no
       - PROMPT_TAGS=
