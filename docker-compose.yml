@@ -137,6 +137,8 @@ services:
       PDF_UPLOAD: "false"
 
       LOG_LEVEL: "DEBUG" 
+
+      OCR_LIMIT_PAGES: "0"
     volumes:
       - ./data/paperless-gpt/prompts:/app/prompts # Mount the prompts directory
 
