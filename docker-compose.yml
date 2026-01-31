@@ -95,7 +95,7 @@ services:
       - AI_PROVIDER=ollama
       - OLLAMA_API_URL=http://localhost:11434
       # - OLLAMA_MODEL=llama3.2:3b
-      - OLLAMA_MODEL=qwen3-vl:32b
+      - OLLAMA_MODEL=ministral-3:14b
       - TOKEN_LIMIT=128000
       - RESPONSE_TOKENS=1000
 
@@ -117,12 +117,12 @@ services:
       # PAPERLESS_PUBLIC_URL: "http://paperless.mydomain.com" # Optional
 
       LLM_PROVIDER: "ollama"
-      LLM_MODEL: "qwen3-vl:32b"
+      LLM_MODEL: "ministral-3:14b"
 
       OLLAMA_HOST: "http://ollama:11434"
       OLLAMA_CONTEXT_LENGTH: "32000" # Sets Ollama NumCtx (context window)
 
-      TOKEN_LIMIT: 1000 # Recommended for smaller models
+      TOKEN_LIMIT: 2000 # Recommended for smaller models
 
       LLM_LANGUAGE: "English" # Optional, default: English
 
